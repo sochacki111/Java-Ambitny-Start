@@ -1,13 +1,13 @@
-package io.github.mat3e;
+package io.github.mat3e.lang;
 
-import java.security.cert.Extension;
-import java.util.ArrayList;
+import io.github.mat3e.HibernateUtil;
+
 import java.util.List;
 import java.util.Optional;
 
-class LangRepository {
+public class LangRepository {
 
-    List<Lang> findAll() {
+    public List<Lang> findAll() {
         var session = HibernateUtil.getSessionFactory().openSession();
         // begin transaction for read only
         var transaction = session.beginTransaction();
@@ -19,7 +19,7 @@ class LangRepository {
         return result;
     }
 
-    Optional<Lang> findById(Integer id) {
+    public Optional<Lang> findById(Integer id) {
         var session = HibernateUtil.getSessionFactory().openSession();
         // begin transaction for read only
         var transaction = session.beginTransaction();
