@@ -7,6 +7,18 @@ import java.util.Optional;
 
 class LangRepository {
 
+    List<Lang> findAll() {
+        var session = HibernateUtil.getSessionFactory().openSession();
+        // begin transaction for read only
+        var transaction = session.beginTransaction();
+
+        List result = session.createQuery( "from Lang", Lang.class).list();
+
+        transaction.commit();
+        session.close();
+        return result;
+    }
+
     Optional<Lang> findById(Integer id) {
         var session = HibernateUtil.getSessionFactory().openSession();
         // begin transaction for read only
