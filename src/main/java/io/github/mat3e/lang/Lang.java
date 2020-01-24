@@ -17,7 +17,7 @@ public class Lang {
     private Integer id;
     private String welcomeMsg;
     private String code;
-    private String emoji;
+    private String languageName;
 
     /**
      * Hibernate (JPA) needs it.
@@ -27,11 +27,11 @@ public class Lang {
 
     }
 
-    public Lang(Integer id, String welcomeMsg, String code, String emoji) {
+    public Lang(Integer id, String welcomeMsg, String code, String languageName) {
         this.id = id;
         this.welcomeMsg = welcomeMsg;
         this.code = code;
-        this.emoji = emoji;
+        this.languageName = languageName;
     }
 
     public Integer getId() {
@@ -54,11 +54,11 @@ public class Lang {
         this.code = code;
     }
 
-    public String getEmoji() {
-        return emoji;
+    public String getLanguageName() {
+        return languageName;
     }
 
-    public void setEmoji(String emoji) {
-        this.emoji = emoji;
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
     }
 }

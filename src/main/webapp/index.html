@@ -25,12 +25,13 @@
       l = {
         id: number,
         code: string,
+        languageName: string
       }
       */
       const checkboxex = langArr.map(l => `
         <label class="pure-radio">
           <input type="radio" name="lang" value="${l.id}">
-          ${l.emoji}
+          ${l.languageName}
         </label>
       `).join('\n');
       document.getElementById('langs').innerHTML = checkboxex;
