@@ -97,7 +97,7 @@ public class HelloServiceTest {
             @Override
             public Optional<Lang> findById(Integer id) {
                 if(id.equals(HelloService.FALLBACK_LANG.getId())) {
-                    return Optional.of(new Lang(null, FALLBACK_ID_WELCOME, null));
+                    return Optional.of(new Lang(null, FALLBACK_ID_WELCOME, null, "🇺🇸"));
                 }
                 return Optional.empty();
             }
@@ -108,7 +108,7 @@ public class HelloServiceTest {
         return new LangRepository() {
             @Override
             public Optional<Lang> findById(Integer id) {
-                return Optional.of((new Lang(null, WELCOME, null)));
+                return Optional.of((new Lang(null, WELCOME, null, "🇺🇸")));
             }
         };
     }
