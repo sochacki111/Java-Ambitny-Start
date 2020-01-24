@@ -16,25 +16,21 @@
 </div>
 <script>
   const API_URL = 'http://localhost:8080/api';
-  const CODE_TO_EMOJI = {
-    'pl': '🇵🇱',
-    'en': '🇺🇸',
-    'de': '🇩🇪'
-  };
-  // Get every items from the 'Lang' object
+
+  // Get every items from the 'LangDTO'
   fetch(`${API_URL}/langs`)
     .then(response => response.json())
     .then(langArr => {
       /*
       l = {
         id: number,
-        code: string
+        code: string,
       }
       */
       const checkboxex = langArr.map(l => `
         <label class="pure-radio">
           <input type="radio" name="lang" value="${l.id}">
-          ${CODE_TO_EMOJI[l.code]}
+          ${l.emoji}
         </label>
       `).join('\n');
       document.getElementById('langs').innerHTML = checkboxex;
