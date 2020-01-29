@@ -5,6 +5,7 @@ import io.github.mat3e.lang.LangRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 // Class responsible for business logic
@@ -28,14 +29,9 @@ class HelloService {
         this.repository = repository;
     }
 
-    String prepareGreeting(String name, String lang) {
-        Integer langId;
-        try {
-            langId = Optional.ofNullable(lang).map(Integer::valueOf).orElse(FALLBACK_LANG.getId());
-        } catch (NumberFormatException e) {
-            logger.info("Non-numeric language id used: " + lang);
-            langId = FALLBACK_LANG.getId();
-        }
+    String prepareGreeting(String name, Integer langId) {
+        // if langId is null then return fallback Lang
+        langId = Optional.ofNullable(langId).orElse(FALLBACK_LANG.getId());
         var welcomeMsg = repository.findById(langId).orElse(FALLBACK_LANG).getWelcomeMsg();
         var nameToWelcome = Optional.ofNullable(name).orElse(FALLBACK_NAME);
         return welcomeMsg + " " + nameToWelcome + "!";
