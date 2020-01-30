@@ -1,4 +1,4 @@
-package io.github.mat3e.todos;
+package io.github.mat3e.todo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Todo", urlPatterns = {"/api/todos/*"})
+@WebServlet(name = "Todo", urlPatterns = {"/api/todo/*"})
 public class TodoServlet extends HttpServlet {
     private final Logger logger = LoggerFactory.getLogger(TodoServlet.class);
 

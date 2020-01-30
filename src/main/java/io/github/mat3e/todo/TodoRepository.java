@@ -1,10 +1,8 @@
-package io.github.mat3e.todos;
+package io.github.mat3e.todo;
 
 import io.github.mat3e.HibernateUtil;
-import io.github.mat3e.lang.Lang;
 
 import java.util.List;
-import java.util.Optional;
 
 public class TodoRepository {
 

@@ -1,2 +1,2 @@
-insert into todos (text, done) values ('mock 1', True);
-insert into todos (text, done) values ('mock 2', False);
+alter table todos
+alter column done bit
