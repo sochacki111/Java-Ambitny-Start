@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Todo", urlPatterns = {"/api/todo/*"})
+@WebServlet(name = "Todo", urlPatterns = {"/api/todos/*"})
 public class TodoServlet extends HttpServlet {
     private final Logger logger = LoggerFactory.getLogger(TodoServlet.class);
 
