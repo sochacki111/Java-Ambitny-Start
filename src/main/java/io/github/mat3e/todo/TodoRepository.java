@@ -13,11 +13,36 @@ public class TodoRepository {
         // begin transaction for read only
         var transaction = session.beginTransaction();
 
-        List result = session.createQuery( "from Todo", Todo.class).list();
+        List result = session.createQuery( "FROM Todo", Todo.class).list();
 
         transaction.commit();
         session.close();
         return result;
+    }
+
+    public Todo toggleTodo(Integer id) {
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+
+        Todo todo = session.get(Todo.class, id);
+        todo.setDone(!todo.getDone());
+
+        transaction.commit();
+        session.close();
+
+        return todo;
+    }
+
+    public Todo addTodo(Todo newTodo) {
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+
+        session.persist(newTodo);
+
+        transaction.commit();
+        session.close();
+
+        return newTodo;
     }
 
     /*

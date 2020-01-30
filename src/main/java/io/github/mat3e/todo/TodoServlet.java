@@ -17,6 +17,7 @@ public class TodoServlet extends HttpServlet {
 
     private ObjectMapper mapper;
     private TodoRepository repository;
+    private Todo newTodo;
 
     /**
      * Calling default Service which is "HelloService"
@@ -41,5 +42,32 @@ public class TodoServlet extends HttpServlet {
         resp.setContentType("application/json;charset=UTF-8");
         // write 'repository.findAll()' into response stream
         mapper.writeValue(resp.getOutputStream(), repository.findAll());
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        logger.info("Got request for creating new Todo ");
+        newTodo = mapper.readValue(req.getInputStream(), Todo.class);
+        // add header send json as a response
+        resp.setContentType("application/json;charset=UTF-8");
+        mapper.writeValue(resp.getOutputStream(), repository.addTodo(newTodo));
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        var pathInfo = req.getPathInfo();
+        logger.info("Got request for toggling todo status. Todo Id: " + pathInfo.substring(1));
+
+        try {
+            var todoId = Integer.valueOf(pathInfo.substring(1));
+            // add header send json as a response
+            resp.setContentType("application/json;charset=UTF-8");
+            mapper.writeValue(resp.getOutputStream(), repository.toggleTodo(todoId));
+        } catch (NumberFormatException e) {
+            logger.info("Wrong path used " + pathInfo);
+        }
+
+
+
     }
 }

@@ -1,4 +1,4 @@
-package io.github.mat3e.todos;
+package io.github.mat3e.todo;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="todos")
+@Table(name="todo")
 public class Todo {
 
     @Id
@@ -16,7 +16,7 @@ public class Todo {
     @GenericGenerator(name="inc", strategy = "increment")
     private Integer id;
     private String text;
-    private Boolean done;
+    private boolean done;
 
     /**
      * Hibernate (JPA) needs it.
