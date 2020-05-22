@@ -13,9 +13,6 @@ class LangDTO {
         this.code = lang.getCode();
         this.languageName = lang.getLanguageName();
     }
-
-//    public LangDTO() {}
-
     /**
      * In order to have POJO (Plain Old Java Object) we need to create getters nad setters
      * Jackson object mapper require POJO
